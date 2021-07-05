@@ -6,7 +6,6 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
-app.use('/build', express.static(__dirname + '/build'))
 
 app.use(morgan(function (tokens, req, res) {
     if (req.method === 'POST') {
@@ -51,10 +50,6 @@ let persons = [
         number: "123444"
     }
 ]
-
-app.get('/', (request, response) => {
-    response.sendFile(__dirname + "/build/index.html")
-})
 
 app.get('/api/persons', (request, response) => {
     response.json(persons)
